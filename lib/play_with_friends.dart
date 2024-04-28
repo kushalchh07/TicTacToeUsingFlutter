@@ -130,15 +130,14 @@ class _PlayFriendsState extends State<PlayFriends> {
     });
   }
 
-  
   static var newFontOther = GoogleFonts.pressStart2p(
-      textStyle: TextStyle(color: Colors.yellow, letterSpacing: 3));
+      textStyle: TextStyle(color: Colors.white, letterSpacing: 3));
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
-    final bgcolor = Color.fromARGB(255, 20, 0, 85);
+    final bgcolor = Colors.black;
 
     return Scaffold(
       appBar: AppBar(
@@ -149,7 +148,7 @@ class _PlayFriendsState extends State<PlayFriends> {
           },
           icon: Icon(
             Icons.arrow_back,
-            color: Colors.yellow,
+            color: Colors.white,
           ),
         ),
       ),
@@ -214,12 +213,11 @@ class _PlayFriendsState extends State<PlayFriends> {
                       },
                       child: Container(
                         decoration: BoxDecoration(
-                            border: Border.all(color: Colors.yellow)),
+                            border: Border.all(color: Colors.grey)),
                         child: Center(
                           child: Text(
                             expression[index],
-                            style:
-                                TextStyle(fontSize: 40, color: Colors.yellow),
+                            style: TextStyle(fontSize: 40, color: Colors.grey),
                           ),
                         ),
                       ),

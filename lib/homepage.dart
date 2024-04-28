@@ -7,7 +7,7 @@ class HomePage extends StatelessWidget {
   const HomePage({super.key});
   static var newFont = GoogleFonts.pressStart2p(
       textStyle:
-          TextStyle(color: Colors.yellow, letterSpacing: 3, fontSize: 40));
+          TextStyle(color: Colors.white, letterSpacing: 3, fontSize: 40));
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -16,7 +16,7 @@ class HomePage extends StatelessWidget {
         child: Container(
           height: size.height,
           width: size.width,
-          decoration: BoxDecoration(color: Color.fromARGB(255, 20, 0, 85)),
+          decoration: BoxDecoration(color: Colors.black),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -40,7 +40,7 @@ class HomePage extends StatelessWidget {
                     fixedSize: Size(450, 60),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8)),
-                    backgroundColor: Colors.yellow,
+                    backgroundColor: Colors.white,
                     padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
                     textStyle:
                         TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
@@ -61,7 +61,7 @@ class HomePage extends StatelessWidget {
                     fixedSize: Size(450, 60),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8)),
-                    backgroundColor: Colors.yellow,
+                    backgroundColor: Colors.white,
                     padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
                     textStyle:
                         TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),

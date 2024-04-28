@@ -11,7 +11,7 @@ class _PlayComputerState extends State<PlayComputer> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final bgcolor = Color.fromARGB(255, 20, 0, 85);
+    final bgcolor = Colors.black;
 
     return Scaffold(
       appBar: AppBar(
@@ -22,13 +22,13 @@ class _PlayComputerState extends State<PlayComputer> {
             },
             icon: Icon(
               Icons.arrow_back,
-              color: Colors.yellow,
+              color: Colors.white,
             )),
       ),
       body: Container(
         height: size.height,
         width: size.width,
-        decoration: BoxDecoration(color: Color.fromARGB(255, 20, 0, 85)),
+        decoration: BoxDecoration(color: bgcolor),
       ),
     );
   }
