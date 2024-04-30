@@ -1,0 +1,94 @@
+import 'dart:math';
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(TicTacToeApp());
+}
+
+class TicTacToeApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Tic Tac Toe',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: TicTacToeScreen(),
+    );
+  }
+}
+
+class TicTacToeScreen extends StatefulWidget {
+  @override
+  _TicTacToeScreenState createState() => _TicTacToeScreenState();
+}
+
+class _TicTacToeScreenState extends State<TicTacToeScreen> {
+  List<String> _board = List.filled(9, '');
+  bool _isPlayerTurn = true; // true for player, false for computer
+  final _random = Random();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Tic Tac Toe'),
+      ),
+      body: Center(
+        child: GridView.builder(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 3,
+          ),
+          itemCount: 9,
+          itemBuilder: (context, index) {
+            return GestureDetector(
+              onTap: () {
+                _onCellTapped(index);
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                  border: Border.all(),
+                ),
+                child: Center(
+                  child: Text(
+                    _board[index],
+                    style: TextStyle(fontSize: 40),
+                  ),
+                ),
+              ),
+            );
+          },
+        ),
+      ),
+    );
+  }
+
+  void _ontapped(int index) {
+    if (_board[index] == '' && !_checkWinner() && !_checkDraw()) {
+      setState(() {
+        _board[index] = _isPlayerTurn ? 'X' : 'O';
+        if (!_isPlayerTurn) {
+          _makeComputerMove();
+        }
+        _isPlayerTurn = !_isPlayerTurn;
+      });
+    }
+  }
+
+  bool _checkWinner() {
+    // Implement the logic to check for a winner
+  }
+
+  bool _checkDraw() {
+    // Implement the logic to check for a draw
+  }
+
+  void _makeComputerMove() {
+    // Implement AI algorithm to make optimal move
+    int index = _random.nextInt(9);
+    while (_board[index] != '') {
+      index = _random.nextInt(9);
+    }
+    _board[index] = 'X';
+  }
+}
