@@ -8,8 +8,19 @@ class HomePage extends StatelessWidget {
   static var newFont = GoogleFonts.pressStart2p(
       textStyle:
           TextStyle(color: Colors.white, letterSpacing: 3, fontSize: 40));
+
   @override
   Widget build(BuildContext context) {
+    void _onpressedFriend() {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => PlayFriends()));
+    }
+
+    void _onpressedComputer() {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => PlayComputer()));
+    }
+
     final size = MediaQuery.of(context).size;
     return Scaffold(
       body: Center(
@@ -27,49 +38,45 @@ class HomePage extends StatelessWidget {
               SizedBox(
                 height: 20,
               ),
-              ElevatedButton(
-                child: Text(
-                  'PLAY WITH COMPUTER',
-                  style: TextStyle(color: Colors.black),
-                ),
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => PlayComputer()));
-                },
-                style: ElevatedButton.styleFrom(
-                    fixedSize: Size(450, 60),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8)),
-                    backgroundColor: Colors.white,
-                    padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
-                    textStyle:
-                        TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
-              ),
+              Button(text: "Play With Friends", onpressed: _onpressedFriend),
               SizedBox(
                 height: 20,
               ),
-              ElevatedButton(
-                child: Text(
-                  'PLAY WITH FRIENDS',
-                  style: TextStyle(color: Colors.black),
-                ),
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => PlayFriends()));
-                },
-                style: ElevatedButton.styleFrom(
-                    fixedSize: Size(450, 60),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8)),
-                    backgroundColor: Colors.white,
-                    padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
-                    textStyle:
-                        TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
-              ),
+              Button(text: "Play With Computer", onpressed: _onpressedComputer)
             ],
           ),
         ),
       ),
+    );
+  }
+}
+
+class Button extends StatelessWidget {
+  final String text;
+  final VoidCallback onpressed;
+  const Button({super.key, required this.text, required this.onpressed});
+
+  @override
+  Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    return ElevatedButton(
+      child: FittedBox(
+        fit: BoxFit.scaleDown,
+        child: Text(
+          text,
+          style: TextStyle(
+            color: Colors.black,
+          ),
+        ),
+      ),
+      onPressed: onpressed,
+      style: ElevatedButton.styleFrom(
+          fixedSize: Size(450, 60),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+          backgroundColor: Colors.white,
+          padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+          textStyle: TextStyle(
+              fontSize: size.height * 0.05, fontWeight: FontWeight.bold)),
     );
   }
 }
